@@ -1,20 +1,20 @@
 var router = require('express').Router();
 var recipesCtrl = require('../controllers/recipes');
 
-// GET /students
-router.get('/recipes', recipesCtrl.index);
+router.get('/recipes', recipesCtrl.findAll);
 
-// POST /facts
-// We have access to the logged in Chef on
-// the server, therefore do not use: /chef/:id/recipes !IMPORTANT
-// router.post('/recipes', isLoggedIn, studentsCtrl.addFact);
+// router.get('/recipes/:id', recipesCtrl.findOne);
 
-// // DELETE /facts/:id
-// router.delete('/facts/:id', isLoggedIn, studentsCtrl.delFact);
+// router.post('/recipes', isLoggedIn, recipesCtrl.create);
 
-// function isLoggedIn(req, res, next) {
-//     if ( req.isAuthenticated() ) return next();
-//     res.redirect('/auth/google');
-// }
+// router.put('/recipes/:id', recipesCtrl.update);
+
+// router.delete('/recipes/:id', isLoggedIn, recipesCtrl.delete);
+
+
+function isLoggedIn(req, res, next) {
+    if ( req.isAuthenticated() ) return next();
+    res.redirect('/auth/google');
+}
 
 module.exports = router;

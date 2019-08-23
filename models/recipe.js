@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 // })
 
 var recipeSchema = new mongoose.Schema({
-    name: String,
+    title: String,
     prepTime: Number,
     imgURL: String
     // ingredients: [ingredientSchema],
