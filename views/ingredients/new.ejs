@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<p>Please first ensure that the Ingredient is not in the dropdown
+  <select>
+    <% ingredients.forEach(function(i) { %>
+      <option><%= i.name %></option>
+    <% }) %>
+  </select>
+</p>
+
+<form id="add-ingredient-form" action="/ingredients" method="POST">
+    <label>Category:</label>
+        <select name="mpaaRating">
+            <option value="Meat">Meat</option>
+            <option value="Fruit">Fruit</option>
+            <option value="Vegetable">Vegetable</option>
+        </select>
+
+    <label>Name:</label>
+        <input type="text" name="name">
+
+    <!-- <label>Life:</label>
+        <input type="date" name="born"> -->
+        
+    <input type="submit" value="Add Ingredient">
+</form>
+
+<%- include('../partials/footer') %>

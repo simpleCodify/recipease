@@ -1,13 +1,17 @@
 var router = require('express').Router();
 var recipesCtrl = require('../controllers/recipes');
 
-router.get('/recipes', recipesCtrl.findAll);
+router.get('/recipes', isLoggedIn, recipesCtrl.findAll);
+router.get('/recipes/new', recipesCtrl.new);
 
-// router.get('/recipes/:id', recipesCtrl.findOne);
+router.get('/recipes/:id', recipesCtrl.findOne);
 
-// router.post('/recipes', isLoggedIn, recipesCtrl.create);
+router.get('/recipes/:id/edit', isLoggedIn, recipesCtrl.edit);
 
-// router.put('/recipes/:id', recipesCtrl.update);
+router.put('/recipes/:id', isLoggedIn, recipesCtrl.update);
+
+router.post('/recipes', isLoggedIn, recipesCtrl.create);
+
 
 // router.delete('/recipes/:id', isLoggedIn, recipesCtrl.delete);
 

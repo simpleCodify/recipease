@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+<%- include('./partials/header.ejs'); %>
 
-    <a href="/auth/google">LOGIN</a>
+<!-- THIS IS GETTING THE RENDER's PROPERTIES FROM THE CONTROLLER -->
 
-  </body>
-</html>
+<% if (user) { %>
+  <h1>Welcome <%= user.name %></h1>
+<% } else { %>
+  <h1>Please Login!</h1>
+<% } %>
+
+
+<a href="/recipes">Take me to Recipes</a>
+
+<%- include('./partials/footer.ejs'); %>

@@ -4,7 +4,7 @@ var recipeSchema = new mongoose.Schema({
     title: String,
     prepTime: Number,
     imgURL: String,
-    reqIngredient: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}]
+    reqIngredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}]
 }, {
     timestamps: true
 });

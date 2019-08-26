@@ -1,20 +1,41 @@
 <%- include('../partials/header.ejs'); %>
 
-<div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="" class="brand-logo left">RECIPES TEST BAR</a>
-          <ul class="right">
-            <li>
-            <% if (user) { %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
-            </li>
-          </ul>
-      </div>
-    </nav>
-  </div>
+
+<!-- THIS IS GETTING THE RENDER's PROPERTIES FROM THE CONTROLLER -->
+
+<% if (user) { %>
+  <h1>Welcome <%= user.name %>, Browse these Recipes!</h1>
+<% } else { %>
+  <h1>Please Login!</h1>
+<% } %>
+
+
+  <!-- <div class="card-action">
+    <form action="/recipes" method="POST">
+      <input type="text" name="text" class="white-text">
+      <button type="submit" class="btn black-text">Add Recipe</button>
+    </form>
+  </div> -->
+
+<form action="/recipes" method="GET">
+    <input type="search" name="title" placeholder="search recipe" autocomplete="off">
+</form>
+
+<div class="list-group">
+    <% recipes.forEach(recipe => { %>
+      <a href="/recipes/<%= recipe._id%>" class="list-group-item list-group-item-action"> <%= recipe.title %> </a>
+    <% }); %>
+</div>
+
+<!-- 
+  <form id="new-form" action="/recipes" method="POST">
+    <label>Title:</label>
+    <input type="text" name="title">
+    <label>Prep Time:</label>
+    <input type="text" name="prepTime">
+    <input type="submit" value="Add Recipe">
+  </form> -->
+
+<a href="/recipes/new" class="btn btn-primary" role="button" aria-pressed="true">Add a New Recipe</a>
 
 <%- include('../partials/footer.ejs'); %>

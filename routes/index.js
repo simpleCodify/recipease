@@ -1,10 +1,17 @@
 var router = require('express').Router();
 var passport = require('passport');
+var recipesCtrl = require('../controllers/recipes');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/recipes')
+  res.render('index', {
+    user: req.user
+  });
 });
+
+router.get('/', recipesCtrl.findAll);
+
 
 router.get('/auth/google', passport.authenticate(
   'google',
@@ -14,7 +21,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/recipes',  //Change to main page
+    successRedirect : '/',  //Change to main page
     failureRedirect : '/'   //Change to main page
   }
 ));

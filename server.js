@@ -19,6 +19,7 @@ var app = express();
 
 var indexRouter = require('./routes/index');
 var recipesRouter = require('./routes/recipes');
+var ingredientsRouter = require('./routes/ingredients');
 
 
 // view engine setup
@@ -42,6 +43,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/', recipesRouter);
+app.use('/', ingredientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
