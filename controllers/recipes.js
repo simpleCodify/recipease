@@ -1,5 +1,6 @@
 var Recipe = require('../models/recipe');
 var Ingredient = require('../models/ingredient');
+var Chef = require('../models/chef');
 
 module.exports = {
     findAll,
@@ -7,8 +8,8 @@ module.exports = {
     new: newRecipe,
     create,
     edit,
-    update
-    // delete: deleteOne
+    update,
+    delete: deleteRecipe
 };
 
 function findAll(req, res, next) {
@@ -44,7 +45,8 @@ function create(req, res) {
     var recipe = new Recipe({
         title: req.body.title,
         prepTime: req.body.prepTime,
-        ingredients: req.body.ingredients
+        ingredients: req.body.ingredients,
+        chef: req.session.passport.user
     });
     recipe.save()
     .then(function(data) {
@@ -69,16 +71,19 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-    Recipe.findByIdAndUpdate(req.params.id, req.body, (err, recipe) => {
-        if (err) console.log(err)
-        recipe.title = req.body.title,
-        recipe.prepTime = req.body.prepTime,
-        recipe.reqIngredients = req.body.ingredients.push();
-        res.redirect(`/recipes/${recipe._id}`);
+    Recipe.findById(req.params.id, (err, recipe) => {
+        recipe.title = req.body.title;
+        recipe.prepTime = req.body.prepTime;
+        // recipe.reqIngredients = req.body.ingredients.push();
+        recipe.save(err => {
+            res.redirect(`/recipes/${recipe._id}`);
+        });
     });
 }
 
-// function deleteOne(req, res, next) {
-
-// }
+function deleteRecipe(req, res, next) {
+    Recipe.findByIdAndDelete(req.params.id, (err) => {
+        res.redirect(`/chefs/${req.user.id}`)
+    });
+}
 

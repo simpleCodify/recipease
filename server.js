@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
+var methodOverride = require('method-override');
 
 // Loading environment variables
 require('dotenv').config();
@@ -17,6 +18,7 @@ require('./config/passport');
 
 var app = express();
 
+var chefsRouter = require('./routes/chefs');
 var indexRouter = require('./routes/index');
 var recipesRouter = require('./routes/recipes');
 var ingredientsRouter = require('./routes/ingredients');
@@ -26,6 +28,7 @@ var ingredientsRouter = require('./routes/ingredients');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -41,6 +44,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/chefs', chefsRouter);
 app.use('/', indexRouter);
 app.use('/', recipesRouter);
 app.use('/', ingredientsRouter);

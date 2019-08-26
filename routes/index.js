@@ -29,7 +29,7 @@ router.get('/oauth2callback', passport.authenticate(
 // LOGOUT route
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/recipes');
+  res.redirect('/');
 });
 
 module.exports = router;

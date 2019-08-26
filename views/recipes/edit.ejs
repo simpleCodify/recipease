@@ -36,14 +36,14 @@
 
   </form> -->
         
-<form action="/recipes/<%= recipe._id%>?_method=PUT" method="PUT">
+<form action="/recipes/<%= recipe._id%>?_method=PUT" method="POST">
     <label>Recipe Name:
         <input type="text" name="title" value="<%= recipe.title%>">
     </label>
     <label>Preparation Time:
-        <input type="text" name="prepTime">
+        <input type="text" name="prepTime" value="<%= recipe.prepTime%>">
     </label>
 
-    <input type="submit">
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
     <%- include('../partials/footer.ejs'); %>

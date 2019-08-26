@@ -12,8 +12,7 @@ router.put('/recipes/:id', isLoggedIn, recipesCtrl.update);
 
 router.post('/recipes', isLoggedIn, recipesCtrl.create);
 
-
-// router.delete('/recipes/:id', isLoggedIn, recipesCtrl.delete);
+router.delete('/recipes/:id', isLoggedIn, recipesCtrl.delete);
 
 
 function isLoggedIn(req, res, next) {

@@ -31,9 +31,15 @@
               <li class="nav-item">
                 <a class="nav-link" href="/recipes">Recipes</a>
               </li>
+
+              <% if (user) { %>
+
               <li class="nav-item">
-                <a class="nav-link" href="#">My Fridge</a>
+                <a class="nav-link" href="/chefs/<%= user._id%>">My Fridge</a>
               </li>
+
+              <% } %>
+
             </ul>
               
             <ul class="navbar-nav ml-auto">
