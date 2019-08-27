@@ -10,40 +10,42 @@
     </li>
 </ul>
 
-<!-- <form action="/recipes/<%= recipe._id%>" method="POST">
+<form action="/recipes/<%= recipe._id%>?_method=PUT" method="POST">
     <div class="form-group">
-      <label for="exampleInputEmail1">Title</label>
-      <input type="text" class="form-control" id="" name="title" placeholder="<%= recipe.title %>" aria-describedby="titleHelp">
-      <small id="emailHelp" class="form-text text-muted">Small Caption under the Input Bar.</small>
+      <label>Recipe Name</label>
+      <input type="text" class="form-control" name="title" value="<%= recipe.title%>" placeholder="<%= recipe.title %>">
+      <small class="form-text text-muted">Small Caption under the Input Bar.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Preparation Time</label>
-      <input type="text" class="form-control" id="" name="prepTime" placeholder="<%= recipe.prepTime %>">
+      <input type="text" class="form-control" name="prepTime" value="<%= recipe.prepTime%>" placeholder="<%= recipe.prepTime %>">
     </div>
-
     <div class="form-group">
-        <label for="exampleFormControlSelect2">Select Ingredients</label>
+        <label for="">Instructions</label>
+        <input type="text" class="form-control" id="" name="instructions" placeholder="<%= recipe.instructions %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  <form action="/recipes/<%=recipe._id%>/ingredient?_method=PUT" method="POST">
+    
+    <div class="form-group">
+        <label>Select Ingredients</label>
         <select multiple class="form-control" id="exampleFormControlSelect2" name="ingredients">
-          <option name="ingredientId">Onion</option>
-          <option name="ingredientId">Carrot</option>
-          <option name="ingredientId">3</option>
-          <option name="ingredientId">4</option>
-          <option name="ingredientId">5</option>
+
+          <% ingredient.forEach(i => { %>
+            <option name="name" value="<%=i%>"><%=i.name%><%=i%></option>
+          <% }); %>
+
         </select>
     </div>
-
     <button type="submit" class="btn btn-primary">Submit</button>
 
-  </form> -->
-        
-<form action="/recipes/<%= recipe._id%>?_method=PUT" method="POST">
-    <label>Recipe Name:
-        <input type="text" name="title" value="<%= recipe.title%>">
-    </label>
-    <label>Preparation Time:
-        <input type="text" name="prepTime" value="<%= recipe.prepTime%>">
-    </label>
+  </form>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+
+<%= ingredient %>
+  <%= recipe.reqIngredients %>
+
     <%- include('../partials/footer.ejs'); %>

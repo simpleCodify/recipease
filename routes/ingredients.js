@@ -1,10 +1,13 @@
 var router = require('express').Router();
 var ingredientsCtrl = require('../controllers/ingredients');
 
-router.get('/ingredients/new', ingredientsCtrl.new);
+// router.get('/ingredients/new', ingredientsCtrl.new);
 
-router.post('/ingredients', ingredientsCtrl.create);
+router.get('/recipes/:id', ingredientsCtrl.findAll);
 
-router.post('/recipes/:id/ingredients', ingredientsCtrl.addToRecipe);
+// router.post('/ingredients', ingredientsCtrl.create);
+
+
+router.put('/recipes/:id/ingredient', ingredientsCtrl.addToRecipe);
 
 module.exports = router;

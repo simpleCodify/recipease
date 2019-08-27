@@ -18,22 +18,33 @@ function findAll(req, res, next) {
         res.render('recipes/index', { 
             recipes,
             user: req.user,
-            name: req.query.name,
+            name: req.query.name
         });
     });
 }
 
-
 function findOne(req, res, next) {
-    Recipe.findById(req.params.id, (err, recipe) => {
+    Recipe.findById(req.params.id)
+    .populate('reqIngredients')
+    .exec((err, recipe)=> {
         res.render("recipes/show", {
-            title: recipe.name,
+            ingredients: recipe.reqIngredient,
             user: req.user,
-            recipe,
-            ingredients: recipe.reqIngredient
+            title: recipe.name,
+            recipe
         });
     });
 };
+
+// function findOne(req, res, next) {
+//     Recipe.findById(req.params.id, (err, recipe) => {
+//         res.render("recipes/show", {
+//             title: recipe.name,
+//             user: req.user,
+//             recipe,
+//         });
+//     });
+// };
 
 function newRecipe(req, res, next) {
     res.render("recipes/new", {
@@ -46,11 +57,11 @@ function create(req, res) {
         title: req.body.title,
         prepTime: req.body.prepTime,
         ingredients: req.body.ingredients,
-        chef: req.session.passport.user
+        chef: req.session.passport.user,
+        instructions: req.body.instructions
     });
     recipe.save()
     .then(function(data) {
-        // res.send(data);
         res.redirect(`/recipes/${recipe._id}`);
     }).catch(function(err) {
         res.status(500).send({
@@ -61,23 +72,30 @@ function create(req, res) {
 
 function edit(req, res) {
     Recipe.findById(req.params.id, (err, recipe) => {
-        res.render("recipes/edit", {
-            title: `${recipe.name}`,
-            user: req.user,
-            recipe,
-            ingredients: recipe.reqIngredient
-        });
+        Ingredient.find({}, (err, ingredient)=> {
+            res.render("recipes/edit", {
+                ingredient,
+                title: `${recipe.name}`,
+                user: req.user,
+                recipe,
+                ingredients: recipe.reqIngredient
+            });
+        })
     });
 }
 
 function update(req, res) {
     Recipe.findById(req.params.id, (err, recipe) => {
-        recipe.title = req.body.title;
-        recipe.prepTime = req.body.prepTime;
-        // recipe.reqIngredients = req.body.ingredients.push();
-        recipe.save(err => {
-            res.redirect(`/recipes/${recipe._id}`);
-        });
+        Ingredient.find({}, (err, ingredient) => {
+            recipe.title = req.body.title;
+            recipe.prepTime = req.body.prepTime;
+            // recipe.reqIngredient.push(i);
+            console.log(ingredient);
+            recipe.instructions = req.body.instructions;
+            recipe.save(err => {
+                res.redirect(`/recipes/${recipe._id}`);
+            });
+        })
     });
 }
 

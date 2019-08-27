@@ -3,12 +3,19 @@
 <!-- THIS IS GETTING THE RENDER's PROPERTIES FROM THE CONTROLLER -->
 
 <h1> <%= recipe.title %></h1>
+<h4>Preparation Time:</h4>
 <h4> <%= recipe.prepTime %></h4>
-<ul>
-    <li>
-      <%= ingredients %>
-    </li>
-</ul>
+
+<h4>Ingredients:</h4>
+
+<h4><%= recipe.reqIngredients%></h4>
+
+
+<h4>Instructions:</h4>
+<h4><%= recipe.instructions%></h4>
+
+
+
 
 <a href="/recipes/<%=recipe._id%>/edit" class="btn btn-primary" role="button" aria-pressed="true">Edit Recipe</a>
 

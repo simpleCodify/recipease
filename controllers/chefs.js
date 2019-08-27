@@ -1,5 +1,6 @@
 var Chef = require('../models/chef');
 var Recipe = require('../models/recipe');
+var Ingredient = require('../models/ingredient');
 
 module.exports = {
     show
@@ -12,6 +13,7 @@ function show(req, res) {
                 user: chef,
                 chef,
                 recipes,
+                fridge: chef.fridge
             });
         });
     });

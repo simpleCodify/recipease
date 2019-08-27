@@ -5,9 +5,8 @@ var chefSchema = new mongoose.Schema({
     email: String,
     avatar: String,
     googleID: String,
-    fridge: {
-        invIngredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}]
-    }
+    fridge: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}],
+    favorites: Array
 }, { 
     timestamps: true 
 });

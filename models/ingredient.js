@@ -2,11 +2,7 @@ var mongoose = require('mongoose');
 
 var ingredientSchema = new mongoose.Schema({
     category: String,
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
+    name: String,
     life: Number,
     amount: Number,
     thumbnail: String,

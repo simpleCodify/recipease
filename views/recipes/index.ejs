@@ -23,7 +23,7 @@
 
 <div class="list-group">
     <% recipes.forEach(recipe => { %>
-      <a href="/recipes/<%= recipe._id%>" class="list-group-item list-group-item-action"> <%= recipe.title %> </a>
+      <a href="/recipes/<%= recipe._id%>" class="list-group-item list-group-item-action"> <%= recipe.title %> Created by: <%= recipe.chef %></a>
     <% }); %>
 </div>
 
