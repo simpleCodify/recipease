@@ -10,32 +10,32 @@
 <% } %>
 
 
-  <!-- <div class="card-action">
-    <form action="/recipes" method="POST">
-      <input type="text" name="text" class="white-text">
-      <button type="submit" class="btn black-text">Add Recipe</button>
-    </form>
-  </div> -->
+<a href="/recipes/new" class="btn btn-primary float-lg-right" role="button" aria-pressed="true" style="margin-right: 30px;">Add a New Recipe</a>
 
-<form action="/recipes" method="GET">
-    <input type="search" name="title" placeholder="search recipe" autocomplete="off">
-</form>
 
-<div class="list-group">
+<div id="container">
+  
+  
+  <div class="row align-items-center">
     <% recipes.forEach(recipe => { %>
-      <a href="/recipes/<%= recipe._id%>" class="list-group-item list-group-item-action"> <%= recipe.title %> Created by: <%= recipe.chef %></a>
-    <% }); %>
-</div>
-
-<!-- 
-  <form id="new-form" action="/recipes" method="POST">
-    <label>Title:</label>
-    <input type="text" name="title">
-    <label>Prep Time:</label>
-    <input type="text" name="prepTime">
-    <input type="submit" value="Add Recipe">
-  </form> -->
-
-<a href="/recipes/new" class="btn btn-primary" role="button" aria-pressed="true">Add a New Recipe</a>
+    <div class="col-mb-3 col-lg-4">
+        
+        <div class="card m-auto text-center">
+          <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="background-color: gray;">
+          <div class="card-body mt-auto" style="background-color: lightgray;">
+            <h5 class="card-title"><%= recipe.title %></h5>
+            <p class="card-text">Recipe Description Placeholder</p>
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
+            <br>
+            <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>
+            
+          </div>
+        </div>
+      </div>
+      <% }); %>
+      
+    </div>
+    
+  </div>
 
 <%- include('../partials/footer.ejs'); %>

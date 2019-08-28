@@ -1,0 +1,14 @@
+<div class="card-deck">
+  
+  <% recipes.forEach(recipe => { %>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.title %></h5>
+        <a href="/recipes/<%= recipe._id%>">View this Recipe</a>
+        <p class="card-text">Recipe Description Placeholder</p>
+        <p class="card-text"><small class="text-muted">Created by: <%= recipe.chef %></small></p>
+      </div>
+    </div>
+  <% }); %>
+  </div>

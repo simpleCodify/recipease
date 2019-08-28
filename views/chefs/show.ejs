@@ -3,24 +3,35 @@
 <h1>USERS PAGE TEST</h1>
 
 
-<h3>My Recipes:</h3>
-
-    <ul>
-        <% recipes.forEach(r => { %>
-            <li>
-                <a href="/recipes/<%= r._id %>"> <%= r.title %> </a>
-                <form action="/recipes/<%=r._id%>?_method=DELETE" method="POST">
-                    <input type="submit" value="X">
-                </form>
-            </li>
-        <% }); %>
-    </ul>
+<h3><%=chef.name%>'s Recipes:</h3>
+<br><br>
 
 
-    <h4>
-        <%=chef.name%>
-        <%=chef.fridge%>
+    <div class="row align-items-center">
+            <% recipes.forEach(recipe => { %>
+            <div class="col-mb-3 col-lg-4">
+                
+                <div class="card m-auto text-center">
+                  <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="background-color: gray;">
+                  <div class="card-body mt-auto" style="background-color: lightgray;">
+                    <h5 class="card-title"><%= recipe.title %></h5>
+                    <p class="card-text">Recipe Description Placeholder</p>
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
+                    <br>
+                    <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>
+                    <br><br>
+                    <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST">
+                      <button type="submit" value="X"> X </button>
+                    </form>
 
-    </h4>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+              
+            </div>
+            
+          </div>
+
 
 <%- include('../partials/footer.ejs'); %>

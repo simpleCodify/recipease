@@ -7,9 +7,14 @@
 <h4> <%= recipe.prepTime %></h4>
 
 <h4>Ingredients:</h4>
-
-<h4><%= recipe.reqIngredients%></h4>
-
+<h4><%= recipe.reqIngredients %></h4>
+<% recipe.reqIngredients.forEach(i => { %>
+    <ul>
+        <li>
+            <%= i.name %>
+        </li>
+    </ul>
+<% }); %>
 
 <h4>Instructions:</h4>
 <h4><%= recipe.instructions%></h4>

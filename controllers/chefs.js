@@ -3,7 +3,9 @@ var Recipe = require('../models/recipe');
 var Ingredient = require('../models/ingredient');
 
 module.exports = {
-    show
+    show,
+    browseFridge,
+    addIngredient
 }
 
 function show(req, res) {
@@ -17,4 +19,35 @@ function show(req, res) {
             });
         });
     });
+}
+
+function browseFridge(req, res) {
+    Chef.findById(req.params.id, (err, chef) => {
+        var ingredients = chef.fridge;
+        res.render('chefs/fridge', {
+            chef,
+            user: chef,
+            ingredients
+        });
+    });
+}
+
+function addIngredient(req, res) {
+    Chef.findById(req.params.id), (err, chef) => {
+        var ingredient = new Ingredient({
+            category: req.body.category,
+            name: req.body.name,
+            life: req.body.life,
+            amount: req.body.amount
+        })
+        chef.fridge.push(ingredient)
+        chef.fridge.save()
+        .then(function(data) {
+            res.redirect(`/chefs/${chef._id}/fridge`);
+        }).catch(function(err) {
+            res.status(500).send({
+                message: err.message || "Error occurred while Adding Ingredient to Fridge."
+            });
+        });
+    }
 }

@@ -6,11 +6,11 @@ var recipesCtrl = require('../controllers/recipes');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    user: req.user
+    user: req.user,
   });
 });
 
-router.get('/', recipesCtrl.findAll);
+router.get('/home', recipesCtrl.home);
 
 
 router.get('/auth/google', passport.authenticate(
@@ -21,7 +21,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/',  //Change to main page
+    successRedirect : '/home',  //Change to main page
     failureRedirect : '/'   //Change to main page
   }
 ));

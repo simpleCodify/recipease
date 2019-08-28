@@ -15,7 +15,7 @@ module.exports = {
       console.log('ingredientCtrl.addToRecipe: ', req.body.ingredienti)
       .then(ingredient => {
         console.log(ingredient);
-        recipe.reqIngredients.push(req.body.ingredienti);
+        // ingredient.forEach(i=> recipe.reqIngredients.push(i._id));
         recipe.save();
       })
       res.redirect(`/recipes/${recipe._id}`);
