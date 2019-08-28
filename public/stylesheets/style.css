@@ -9,6 +9,11 @@ body {
   width: 27rem;
   height: 22rem;
   margin-bottom: 25px !important;
+  padding-bottom: 25px !important;
+}
+
+.foodcard {
+  padding-bottom: 25px;
 }
 
 #container {

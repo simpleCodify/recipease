@@ -20,16 +20,19 @@
     <% recipes.forEach(recipe => { %>
     <div class="col-mb-3 col-lg-4">
         
-        <div class="card m-auto text-center">
+        <div class="card text-center foodcard">
           <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="background-color: gray;">
-          <div class="card-body mt-auto" style="background-color: lightgray;">
+          <div class="card-body" style="background-color: lightgray;">
             <h5 class="card-title"><%= recipe.title %></h5>
             <p class="card-text">Recipe Description Placeholder</p>
+          </div>
+
+          <div class="card-footer mb-3">
             <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
             <br>
             <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>
-            
           </div>
+            
         </div>
       </div>
       <% }); %>

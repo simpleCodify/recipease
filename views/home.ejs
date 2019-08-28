@@ -61,4 +61,31 @@
 </div>
 
 
+
+<div class="card-columns row align-items-center">
+    <% recipes.forEach(recipe => { %>
+    <div class="col-mb-1 col-lg-4" style="padding-bottom: 80px;">
+        
+        <div class="card text-center foodcard">
+          <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="background-color: gray;">
+          <div class="card-body" style="background-color: lightgray;">
+            <h5 class="card-title"><%= recipe.title %></h5>
+            <p class="card-text">Recipe Description Placeholder</p>
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
+            <br>
+            <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>
+          </div>
+            
+        </div>
+      </div>
+      <% }); %>
+      
+    </div>
+    
+  </div>
+
+
+
+
+
 <%- include('./partials/footer.ejs'); %>

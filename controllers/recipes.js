@@ -48,9 +48,12 @@ function findOne(req, res, next) {
 // };
 
 function newRecipe(req, res, next) {
-    res.render("recipes/new", {
-        user: req.user
-    });
+    Ingredient.find({}, (err, ingredient) => {
+        res.render("recipes/new", {
+            user: req.user,
+            ingredient
+        });
+    })
 }
 
 function create(req, res) {
@@ -58,7 +61,7 @@ function create(req, res) {
         title: req.body.title,
         prepTime: req.body.prepTime,
         imgURL: req.body.imgURL,
-        ingredients: req.body.ingredients,
+        reqIngredients: req.body.ingredients,
         chef: req.session.passport.user,
         instructions: req.body.instructions
     });
@@ -86,22 +89,17 @@ function edit(req, res) {
     });
 }
 
+
 function update(req, res) {
-    console.log("REQPARAMSID " + req.params.id)
     Recipe.findById(req.params.id, (err, recipe) => {
         console.log("INGREDIENTID: "+ recipe.reqIngredients)
-        Ingredient.findById(req.body.ingredient, (err, abc) => {
-            console.log("THIS IS THE INGREDIENT PASSED: " + abc)
-            recipe.title = req.body.title;
-            recipe.prepTime = req.body.prepTime;
-            recipe.reqIngredients.push(abc);
-            recipe.instructions.push(req.body.instructions);
+            console.log("ARRAY ", Array.isArray(req.body.ingredients))
+            recipe.reqIngredients = recipe.reqIngredients.concat(req.body.ingredients);
             recipe.save(err => {
                 console.log(err)
                 res.redirect(`/recipes/${recipe._id}`);
             });
-        })
-    });
+        });
 }
 
 // function update(req, res) {
