@@ -25,10 +25,10 @@
 
                 <div class="btn-group" role="group" aria-label="Basic example" style="width: 100%;">
                     <a href="/recipes/<%= recipe._id%>" class="btn btn-outline-primary" style="width: 50%;">View this Recipe</a>
-                    <form style="width: 50%;">
-                      <button action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST" class="btn btn-outline-danger" type="submit" value="X" style="width: 100%"> X </button>
+                    
+                    <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST" style="width: 50%;">
+                      <button class="btn btn-outline-danger" type="submit" value="X" style="width: 100%;"> X </button>
                     </form>
-
                 </div>
               </div>
             </div>
