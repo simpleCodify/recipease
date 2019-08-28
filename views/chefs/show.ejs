@@ -7,31 +7,56 @@
 <br><br>
 
 
-    <div class="row align-items-center">
-            <% recipes.forEach(recipe => { %>
-            <div class="col-mb-3 col-lg-4">
-                
-                <div class="card m-auto text-center">
-                  <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="background-color: gray;">
-                  <div class="card-body mt-auto" style="background-color: lightgray;">
-                    <h5 class="card-title"><%= recipe.title %></h5>
-                    <p class="card-text">Recipe Description Placeholder</p>
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
-                    <br>
-                    <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>
-                    <br><br>
-                    <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST">
-                      <button type="submit" value="X"> X </button>
+<div id="container">
+  
+    <div class="card-columns row align-items-center">
+        <% recipes.forEach(recipe => { %>
+        <div class="col-mb-1 col-lg-4" style="padding-bottom: 85px;">
+            
+            <div class="card text-center foodcard" style="border-radius: 35px 35px 0 0;">
+              <img class="card-img-top" src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" alt="Image Placeholder" style="border: 2px solid black; border-radius: 35px 35px 0 0;">
+              <div class="card-body" style="background-color: lightgray; border: 2px solid black;">
+                <h5 class="card-title"><%= recipe.title %></h5>
+                <p class="card-text">Recipe Description Placeholder</p>
+              </div>
+              <div class="card-footer" style="border: 2px solid black; border-radius: 0 0 35px 35px;">
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
+                <br>
+
+                <div class="btn-group" role="group" aria-label="Basic example" style="width: 100%;">
+                    <a href="/recipes/<%= recipe._id%>" class="btn btn-outline-primary" style="width: 50%;">View this Recipe</a>
+                    <form style="width: 50%;">
+                      <button action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST" class="btn btn-outline-danger" type="submit" value="X" style="width: 100%"> X </button>
                     </form>
 
-                  </div>
                 </div>
               </div>
-              <% }); %>
-              
             </div>
             
           </div>
+          <% }); %>
+      </div>
+
+
+      <div class="card-group container align-items-center">
+
+        <% recipes.forEach(recipe => { %>
+        <div class="card text-black">
+            <img class="card-img-top" src="<%=recipe.imgURL%>" alt="Image Placeholder" style="border: 2px solid black; border-radius: 35px 35px 0 0; width: 100%; height: 100%;">
+            <div class="card-img-overlay">
+              <h5 class="card-title"><%= recipe.title %></h5>
+              <p class="card-text">Recipe Preparation Time: <%= recipe.prepTime %></p>
+              <p class="card-text">Recipe Description Placeholder</p>
+            </div>
+            <% }); %>
+        </div>
+
+      </div>
+
+
+</div>
+
+
 
 
 <%- include('../partials/footer.ejs'); %>

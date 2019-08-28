@@ -16,7 +16,15 @@
 <% }); %>
 
 <h4>Instructions:</h4>
-<h4><%= recipe.instructions%></h4>
+<% recipe.instructions.forEach(ins => { %>
+<ul>
+    <li>
+        <%= ins %>
+    </li>
+</ul>
+<% }); %>
+
+<img src="<%=recipe.imgURL%>">
 
 
 
