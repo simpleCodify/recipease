@@ -4,7 +4,8 @@ var Ingredient = require('../models/ingredient');
 
 module.exports = {
     addToRecipe,
-    findAll
+    addToFridge,
+    findAll,
     // create,
     // new: newIngredient
 }
@@ -24,6 +25,16 @@ module.exports = {
       console.log(err);
     })
   };
+
+  function addToFridge(req, res) {
+    Chef.findById(req.user)
+    .then((chef) => {
+      console.log("This is the CHEF: " + chef);
+      ingredients = chef.fridge;
+      console.log("This is the CHEF's Fridge" + ingredients);
+    })
+    Ingredient.findById()
+  }
 
   function findAll(req, res, next) {
     Ingredients.find({}, (err, ingredients) => {

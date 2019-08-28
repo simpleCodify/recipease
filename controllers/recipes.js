@@ -102,21 +102,6 @@ function update(req, res) {
         });
 }
 
-// function update(req, res) {
-//     Recipe.findById(req.params.id, (err, recipe) => {
-//         Ingredient.find({}, (err, ingredient) => {
-//             recipe.title = req.body.title;
-//             recipe.prepTime = req.body.prepTime;
-//             ingredient.forEach(i=> recipe.reqIngredients.push(i));
-//             console.log(ingredient);
-//             recipe.instructions = req.body.instructions;
-//             recipe.save(err => {
-//                 res.redirect(`/recipes/${recipe._id}`);
-//             });
-//         })
-//     });
-// }
-
 function deleteRecipe(req, res, next) {
     Recipe.findByIdAndDelete(req.params.id, (err) => {
         res.redirect(`/chefs/${req.user.id}`)
