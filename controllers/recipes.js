@@ -106,12 +106,14 @@ function update(req, res) {
     Recipe.findById(req.params.id, (err, recipe) => {
         console.log("INGREDIENTID: "+ recipe.reqIngredients)
             console.log("ARRAY ", Array.isArray(req.body.ingredients))
-            recipe.reqIngredients = recipe.reqIngredients.concat(req.body.ingredients),
+            // recipe.reqIngredients = recipe.reqIngredients.concat(req.body.ingredients),
+            recipe.reqIngredients = req.body.ingredients,
             recipe.title = req.body.title,
             recipe.prepTime = req.body.prepTime,
             recipe.imgURL = req.body.imgURL,
             recipe.description = req.body.description,
-            recipe.instructions.push(req.body.instructions);
+            // recipe.instructions.push(req.body.instructions);
+            recipe.instructions = req.body.instructions,
             recipe.save(err => {
                 console.log(err)
                 res.redirect(`/recipes/${recipe._id}`);

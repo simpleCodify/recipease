@@ -10,23 +10,23 @@
   <div class="d-flex p-4 bd-highlight">
       <div class="form-group w-50 p-4">
         <label>Title</label>
-        <input type="text" class="form-control w-100 p-2 bd-highlight flex-fill mb-3 p-4" id="" name="title" placeholder="Name of Recipe">
+        <input type="text" class="form-control w-100 p-2 bd-highlight flex-fill mb-3 p-4" id="" name="title" placeholder="Name of Recipe" value="<%=recipe.title%>">
   
           <label>Description</label>
-          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="description" placeholder="Description of this Dish">
+          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="description" placeholder="Description of this Dish" value="<%=recipe.description%>">
   
         <label>Preparation Time</label>
-        <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="prepTime" placeholder="In Minutes">
+        <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="prepTime" placeholder="In Minutes" value="<%=recipe.prepTime%>">
   
           <label>Instructions</label>
-          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="instructions" placeholder="Instructions">
+          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-3 p-4" id="" name="instructions" placeholder="Instructions" value="<%=recipe.instructions%>">
   
       </div>
       <div class="form-group w-50 p-4" style="padding: 20px auto;">
           <label>Image URL</label>
-          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-4 p-4" id="" name="imgURL" placeholder="Link to your Dish's Image">
+          <input type="text" class="form-control p-2 bd-highlight flex-fill mb-4 p-4" id="" name="imgURL" placeholder="Link to your Dish's Image" value="<%=recipe.imgURL%>">
           <div class="text-center" style="background-color: black; border-radius: 25px;">
-            <img src="https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg" class="bd-highlight flex-fill mb-2 p-4" style="width: auto; height: 15rem; border: 2px solid black;">
+            <img src="<%=recipe.imgURL%>" class="bd-highlight flex-fill mb-2 p-4" style="width: auto; height: 15rem; border: 2px solid black;">
   
           </div>
         </div>
