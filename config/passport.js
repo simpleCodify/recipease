@@ -18,7 +18,7 @@ passport.use(new GoogleStrategy({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleID: profile.id,
-                    avatar: profile._json_picture
+                    avatar: profile._json.picture
                 });
                 newChef.save(function(err) {
                     if (err) return cb(err);

@@ -2,54 +2,49 @@
 
 
 <h1>NEW RECIPE?</h1>
+<div class="d-flex p-2 bd-highlight">
 
-<form action="/recipes" method="POST">
-  <div class="form-group">
-    <label for="">Title</label>
-    <input type="text" class="form-control" id="" name="title" placeholder="Name of Recipe">
-    <small id="emailHelp" class="form-text text-muted">Small Caption under the Input Bar.</small>
-  </div>
-  <div class="form-group">
-    <label for="">Preparation Time</label>
-    <input type="text" class="form-control" id="" name="prepTime" placeholder="In Minutes">
-  </div>
-  <div class="form-group">
-      <label for="">Instructions</label>
-      <input type="text" class="form-control" id="" name="instructions" placeholder="Instructions">
+  <form action="/recipes" method="POST">
+    <div class="form-group" style="margin: 20px auto;">
+      <label class="mx-left" style="margin-left: 20px;">Title</label>
+      <input type="text" class="form-control mx-left" id="" name="title" placeholder="Name of Recipe" style="max-width: 45%; margin-left: 20px;">
     </div>
-  <div class="form-group">
-      <label for="">Ingredient Category</label>
-      <input type="text" class="form-control" id="" name="ingredientCategory" placeholder="Category of Ingredient">
-  </div>
-  <div class="form-group">
-      <label for="">Ingredient Name</label>
-      <input type="text" class="form-control" id="" name="ingredientName" placeholder="Name of Ingredient">
-  </div>
-  <div class="form-group">
-      <label for="">Ingredient Amount</label>
-      <input type="text" class="form-control" id="" name="ingredientAmount" placeholder="Amount of Ingredient">
-  </div>
+    <div class="form-group" style="margin: 20px auto;">
+        <label class="mx-left" style="margin-left: 20px;">Description</label>
+        <input type="text" class="form-control mx-left" id="" name="description" placeholder="Description of this Dish" style="max-width: 45%; margin-left: 20px;">
+    </div>
+    <div class="form-group">
+      <label style="margin-left: 20px;">Preparation Time</label>
+      <input type="text" class="form-control" id="" name="prepTime" placeholder="In Minutes" style="max-width: 45%; margin-left: 20px;">
+    </div>
+    <div class="form-group">
+        <label style="margin-left: 20px;">Instructions</label>
+        <input type="text" class="form-control" id="" name="instructions" placeholder="Instructions" style="max-width: 45%; margin-left: 20px;">
+    </div>
+    <div class="form-group" style="margin: 20px auto;">
+        <label class="mx-left" style="margin-left: 20px;">Image URL</label>
+        <input type="text" class="form-control mx-left" id="" name="imgURL" placeholder="Link to your Dish's Image" style="max-width: 45%; margin-left: 20px;">
+    </div>
+  
+    <div class="form-group text-center">
+        <label>Select Ingredients</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2" name="ingredients" style="max-width: 45%; margin: 20px auto;">
+          
+          <% ingredient.forEach(i => { %>
+            <option value="<%=i._id%>"><%=i.name%></option>
+          <% }); %>
+            
+        </select>
+    </div>
+  
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  
+  </form>
 
 
-  <!-- CHECKBOX -->
-  <!-- <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div> -->
-
-  <!-- <div class="form-group">
-      <label for="exampleFormControlSelect2">Select Ingredients</label>
-      <select multiple class="form-control" id="" name="reqIngredients">
-        <option name="ingredientId">Onion</option>
-        <option name="ingredientId">Carrot</option>
-        <option name="ingredientId">Beef</option>
-        <option name="ingredientId">Pork</option>
-        <option name="ingredientId">Tofu</option>
-      </select>
-  </div> -->
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
 
 
 

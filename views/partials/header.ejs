@@ -47,19 +47,29 @@
               <% } %>
 
             </ul>
-              
-            <ul class="navbar-nav ml-auto">
-                <form action="/recipes" method="GET">     
-                  <input type="search" class="form-control" name="title" placeholder="search recipe" autocomplete="off">   
-                </form>
-              <li>
+
+            <div class="ml-auto">
+
+              <ul class="navbar-nav">
                   <% if (user) { %>
-                      <a href="/logout" class="nav-link">Log Out</a>
-                  <% } else { %>
-                      <a href="/auth/google" class="nav-link">Login with Google</a>
-                  <% } %>
-              </li>
-            </ul>
+                    <div>
+                      <li class="nav-item text-center">
+                        <img class="profile-avatar align-middle" src="<%=user.avatar%>">
+                        <a href="/logout" class="nav-link">Log Out</a>   
+                      </li>
+                    </div>
+
+                    <% } else { %>
+                      <div>
+                        <li class="nav-item text-center">
+                          <ion-icon name="person"></ion-icon>
+                          <a href="/auth/google" class="nav-link">Login with Google</a>
+                        </li>
+                      </div>
+                    <% } %>
+              </ul>
+
+            </div>
                   
           </div>
         </nav>

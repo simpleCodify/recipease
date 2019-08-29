@@ -7,6 +7,10 @@ var recipeSchema = new mongoose.Schema({
         type: String,
         default: "https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg"
     },
+    description: {
+        type: String,
+        default: "Description Placeholder"
+    },
     reqIngredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'}],
     instructions: [String],
     chef: {type: mongoose.Schema.Types.ObjectId, ref: "Chef"}

@@ -5,7 +5,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.card {
+.bpad {
   width: 27rem;
   height: 22rem;
   margin-bottom: 25px !important;
@@ -13,6 +13,8 @@ body {
 }
 
 .foodcard {
+  width: 27rem;
+  
   padding-bottom: 25px;
 }
 
@@ -36,4 +38,16 @@ h1 {
 .carousel-inner img {
   margin: auto;
   max-height: 400px;
+}
+
+.profile-avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 8 2 auto;
 }

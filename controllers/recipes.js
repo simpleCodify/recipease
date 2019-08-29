@@ -25,6 +25,16 @@ function findAll(req, res, next) {
     });
 }
 
+function findCookable(req, res, next) {
+    Recipe.find({}, (err, recipes) => {
+        res.render('recipes/index', { 
+            recipes,
+            user: req.user,
+            name: req.query.name
+        });
+    });
+}
+
 function findOne(req, res, next) {
     Recipe.findById(req.params.id)
     .populate('reqIngredients')
@@ -62,6 +72,7 @@ function create(req, res) {
         title: req.body.title,
         prepTime: req.body.prepTime,
         imgURL: req.body.imgURL,
+        description: req.body.description,
         reqIngredients: req.body.ingredients,
         chef: req.session.passport.user,
         instructions: req.body.instructions
@@ -99,6 +110,7 @@ function update(req, res) {
             recipe.title = req.body.title,
             recipe.prepTime = req.body.prepTime,
             recipe.imgURL = req.body.imgURL,
+            recipe.description = req.body.description,
             recipe.instructions.push(req.body.instructions);
             recipe.save(err => {
                 console.log(err)

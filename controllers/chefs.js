@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function show(req, res) {
-    Chef.findById(req.params.id, (err, chef) => {
+    Chef.findById(req.user, (err, chef) => {
         Recipe.find({ chef: chef._id }, (err, recipes) => {
             res.render('chefs/show', {
                 user: chef,
@@ -21,6 +21,19 @@ function show(req, res) {
         });
     });
 }
+
+// function show(req, res) {
+//     Chef.findById(req.params.id, (err, chef) => {
+//         Recipe.find({ chef: chef._id }, (err, recipes) => {
+//             res.render('chefs/show', {
+//                 user: chef,
+//                 chef,
+//                 recipes,
+//                 fridge: chef.fridge
+//             });
+//         });
+//     });
+// }
 
 function showFridge(req, res) {
     Chef.findById(req.params.id)
