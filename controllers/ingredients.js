@@ -6,8 +6,6 @@ module.exports = {
     addToRecipe,
     addToFridge,
     findAll,
-    // create,
-    // new: newIngredient
 }
 
   function addToRecipe(req, res) {
@@ -57,16 +55,3 @@ module.exports = {
   //         });
   //     });
   // }
-
-  function newIngredient(req, res) {
-      Recipe.find({}), function(err, recipes) {
-          recipes
-      },
-    Ingredient.find({}, function(err, ingredients) {
-      res.render('ingredients/new', {
-        title: 'Add Ingredient',
-        ingredients
-      });
-    })
-  }
-  

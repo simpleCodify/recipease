@@ -10,7 +10,8 @@ module.exports = {
     edit,
     update,
     delete: deleteRecipe,
-    home
+    home,
+    randomRecipe
 };
 
 function findAll(req, res, next) {
@@ -75,25 +76,6 @@ function create(req, res) {
     });
 }
 
-// function create(req, res) {
-//     var recipe = new Recipe({
-//         title: req.body.title,
-//         prepTime: req.body.prepTime,
-//         imgURL: req.body.imgURL,
-//         reqIngredients: req.body.ingredients,
-//         chef: req.session.passport.user,
-//         instructions: req.body.instructions
-//     });
-//     recipe.save()
-//     .then(function(data) {
-//         res.redirect(`/recipes/${recipe._id}`);
-//     }).catch(function(err) {
-//         res.status(500).send({
-//             message: err.message || "Error occurred while creating the Recipe."
-//         });
-//     });
-// }
-
 function edit(req, res) {
     Recipe.findById(req.params.id, (err, recipe) => {
         Ingredient.find({}, (err, ingredient)=> {
@@ -140,4 +122,22 @@ function home(req, res, next) {
             name: req.query.name
         });
     });
+}
+
+
+function randomRecipe(req, res) {
+    Recipe.find({}, (err, recipes) => {
+        var rNum = randomNumber(0, recipes.length);
+        var rID = recipes[rNum]._id
+        Recipe.findById(rID, (err, recipe) => {
+            res.render("home", {
+                user: req.user,
+                recipe
+            });
+        });
+    });
+}
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max-min)) + min;
 }

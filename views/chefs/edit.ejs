@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs'); %>
+
+
+
+
+<form action="/chefs/<%=chef._id%>/fridge/add?_method=PUT" method="POST">
+
+<div class="form-group">
+    <label>Select Ingredients</label>
+
+        <select multiple class="form-control" id="exampleFormControlSelect2" name="ingredients">  
+        <% ingredient.forEach(i => { %>
+            <option value="<%=i._id%>"><%=i.name%></option>
+        <% }) %>    
+        </select>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+
+
+
+
+<%- include('../partials/footer.ejs'); %>

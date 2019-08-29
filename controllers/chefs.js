@@ -4,8 +4,9 @@ var Ingredient = require('../models/ingredient');
 
 module.exports = {
     show,
-    browseFridge,
-    addIngredient
+    showFridge,
+    editFridge,
+    addIngredient,
 }
 
 function show(req, res) {
@@ -21,33 +22,40 @@ function show(req, res) {
     });
 }
 
-function browseFridge(req, res) {
+function showFridge(req, res) {
+    Chef.findById(req.params.id)
+    .populate('fridge')
+    .exec((err, chef) => {
+            res.render('chefs/fridge', {
+                chef,
+                user: chef,
+            });
+        });
+}
+
+function editFridge(req, res) {
     Chef.findById(req.params.id, (err, chef) => {
-        var ingredients = chef.fridge;
-        res.render('chefs/fridge', {
-            chef,
-            user: chef,
-            ingredients
+        Ingredient.find({}, (err, ingredient) => {
+            res.render("chefs/edit", {
+                chef,
+                ingredient,
+                user: chef,
+            });
         });
     });
 }
 
 function addIngredient(req, res) {
-    Chef.findById(req.params.id), (err, chef) => {
-        var ingredient = new Ingredient({
-            category: req.body.category,
-            name: req.body.name,
-            life: req.body.life,
-            amount: req.body.amount
-        })
-        chef.fridge.push(ingredient)
-        chef.fridge.save()
-        .then(function(data) {
-            res.redirect(`/chefs/${chef._id}/fridge`);
-        }).catch(function(err) {
-            res.status(500).send({
-                message: err.message || "Error occurred while Adding Ingredient to Fridge."
-            });
+    console.log("Request is in the ADDING INGREDIENT phase")
+    console.log("This is the req.params.id: ", req.user)
+    Chef.findById(req.user, (err, chef) => {
+        console.log("REQUEST is in the PUSHING INGREDIENTS phase")
+        chef.fridge = chef.fridge.concat(req.body.ingredients),
+        chef.save(err => {
+            console.log("Error while Saving CHEF", err)
+            res.redirect(`/chefs/${chef._id}/fridge`)
         });
-    }
+    });
 }
+
+

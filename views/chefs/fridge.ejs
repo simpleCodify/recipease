@@ -7,13 +7,16 @@
 <br><br>
 
 <ul>
-
-        <h4> <%=ingredients.length%> </h4>
-        <h4> <%=chef.fridge.length%> </h4>
-
-
+    <% chef.fridge.forEach(i => { %>
+        <ul>
+            <li>
+                <%= i.name %>
+            </li>
+        </ul>
+    <% }); %>
 </ul>
 
+<a href="/chefs/<%=chef._id%>/fridge/edit">Edit fridge</a>
 
 
 <%- include('../partials/footer.ejs'); %>
