@@ -1,18 +1,29 @@
 <%- include('../partials/header.ejs'); %>
 
-<div class="jumbotron text-center">
-        <img src="<%=recipe.imgURL%>">
+<div class="jumbotron w-75 mx-auto text-center">
+        <img src="<%=recipe.imgURL%>" style="width: 65%; height: 35%;">
         <h1 class="display-4"><%= recipe.title %></h1>
         <p class="lead"><%= recipe.description %></p>
         <p>Preparation Time: <%= recipe.prepTime %> Minutes</p>
 
         <hr class="my-3">
 
-        <% recipe.reqIngredients.forEach(i => { %>
-        <div class="flex-row text-center">
-            <p class="text-center"><%= i.name %></p>
+
+<div class="fridge container h-100 p-5" style="height: 100%;background-color: lightgray; border-radius: 25px;">
+    
+    <div class="row text-center">
+            <% recipe.reqIngredients.forEach(i => { %>
+        <div class="col-6 col-md-4" style="padding: 10px; border: 1px solid black; border-radius: 25px;">
+          <h4><%= i.name %></h4>
+          
+          <img class="ingredient-avatar " src="<%=i.thumbnail%>">
         </div>
-        <% }); %>
+
+      <% }); %>
+    </div>
+    
+</div>
+
         <hr class="my-auto">
 
         <h3 class="display-6 mt-2">Instructions:</h3>
