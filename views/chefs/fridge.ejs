@@ -1,22 +1,27 @@
 <%- include('../partials/header.ejs'); %>
 
-<h1>FRIDGE PAGE TEST</h1>
-
-
-<h3><%=chef.name%>'s Ingredients:</h3>
+<h1><%=chef.name%>'s Ingredients:</h1>
 <br><br>
 
-<ul>
-    <% chef.fridge.forEach(i => { %>
-        <ul>
-            <li>
-                <%= i.name %>
-            </li>
-        </ul>
-    <% }); %>
-</ul>
+<div class="fridge container h-100 p-5" style="height: 100%;background-color: lightgray; border-radius: 25px;">
+    
+    <div class="row text-center">
+        <% chef.fridge.forEach(i => { %>
+        <div class="col-6 col-md-4" style="padding: 10px; border: 1px solid black; border-radius: 25px;">
+          <h4><%= i.name %></h4>
+          
+          <img class="ingredient-avatar " src="<%=i.thumbnail%>">
+        </div>
 
-<a href="/chefs/<%=chef._id%>/fridge/edit">Edit fridge</a>
+      <% }); %>
+    </div>
+    
+</div>
+
+<div class="text-center mt-5">
+    <a href="/chefs/<%=chef._id%>/fridge/edit" class="btn btn-primary text-center">Edit fridge</a>
+
+</div>
 
 
 <%- include('../partials/footer.ejs'); %>

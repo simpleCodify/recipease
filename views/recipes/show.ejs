@@ -1,33 +1,28 @@
 <%- include('../partials/header.ejs'); %>
 
-<h1> <%= recipe.title %></h1>
-<h4>Preparation Time:</h4>
-<h4> <%= recipe.prepTime %></h4>
+<div class="jumbotron text-center">
+        <img src="<%=recipe.imgURL%>">
+        <h1 class="display-4"><%= recipe.title %></h1>
+        <p class="lead"><%= recipe.description %></p>
+        <p>Preparation Time: <%= recipe.prepTime %> Minutes</p>
 
-<h4>Ingredients:</h4>
-<% recipe.reqIngredients.forEach(i => { %>
-    <ul>
-        <li>
-            <%= i.name %>
-        </li>
-    </ul>
-<% }); %>
+        <hr class="my-3">
 
-<h4>Instructions:</h4>
-<% recipe.instructions.forEach(ins => { %>
-<ul>
-    <li>
-        <%= ins %>
-    </li>
-</ul>
-<% }); %>
+        <% recipe.reqIngredients.forEach(i => { %>
+        <div class="flex-row text-center">
+            <p class="text-center"><%= i.name %></p>
+        </div>
+        <% }); %>
+        <hr class="my-auto">
 
-<img src="<%=recipe.imgURL%>">
+        <h3 class="display-6 mt-2">Instructions:</h3>
+            <p><%=recipe.instructions%></p>
+        <p class="lead">
+                <a href="/recipes/<%=recipe._id%>/edit" class="btn btn-primary" role="button" aria-pressed="true">Edit Recipe</a>
+            </p>
+</div>
 
 
-
-
-<a href="/recipes/<%=recipe._id%>/edit" class="btn btn-primary" role="button" aria-pressed="true">Edit Recipe</a>
 
 
 
