@@ -4,14 +4,15 @@ var recipesCtrl = require('../controllers/recipes');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', {
-    user: req.user,
-  });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', {
+//     user: req.user,
+//   });
+// });
+
+router.get('/', recipesCtrl.home);
 
 router.get('/home', recipesCtrl.home);
-
 
 router.get('/auth/google', passport.authenticate(
   'google',
