@@ -3,11 +3,11 @@
 <h1><%=chef.name%>'s Ingredients:</h1>
 <br><br>
 
-<div class="fridge container h-100 p-5" style="height: 100%;background-color: lightgray; border-radius: 25px;">
+<div class="fridge container h-100 p-5" style="height: 100%;background-color: rgb(238, 238, 238); border-radius: 25px; border: 30px ridge #878787;">
     
     <div class="row text-center">
         <% chef.fridge.forEach(i => { %>
-        <div class="col-6 col-md-4" style="padding: 10px; border: 1px solid black; border-radius: 25px;">
+        <div class="col-6 col-md-4 transclass2" style="padding: 10px; border-radius: 25px; border: 10px inset #878787;">
           <h4><%= i.name %></h4>
           
           <img class="ingredient-avatar " src="<%=i.thumbnail%>">

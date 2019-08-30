@@ -1,7 +1,8 @@
 <%- include('../partials/header.ejs'); %>
 
-<div class="jumbotron w-75 mx-auto text-center">
-        <img src="<%=recipe.imgURL%>" style="width: 65%; height: 35%;">
+
+<div class="jumbotron w-75 mx-auto text-center" style="background-color: rgb(238, 238, 238); border-radius: 25px; border: 15px ridge #878787;">
+        <img src="<%=recipe.imgURL%>" style="width: 65%; height: 35%; background-color: rgb(238, 238, 238); border-radius: 25px; border: 10px ridge #878787;">
         <h1 class="display-4"><%= recipe.title %></h1>
         <p class="lead"><%= recipe.description %></p>
         <p>Preparation Time: <%= recipe.prepTime %> Minutes</p>
@@ -9,14 +10,20 @@
         <hr class="my-3">
 
 
-<div class="fridge container h-100 p-5" style="height: 100%;background-color: lightgray; border-radius: 25px;">
+<div class="fridge container h-100 p-5" style="height: 100%;background-color: rgb(238, 238, 238); border-radius: 25px; border: 10px ridge #878787;">
     
     <div class="row text-center">
             <% recipe.reqIngredients.forEach(i => { %>
-        <div class="col-6 col-md-4" style="padding: 10px; border: 1px solid black; border-radius: 25px;">
+              <% if (user.fridge.includes(i.id)) { %>
+        <div class="col-6 col-md-4 transclass" style="background-color: #b0d79b; border-radius: 25px; border: 10px inset #878787; margin: 3px auto;">
           <h4><%= i.name %></h4>
-          
           <img class="ingredient-avatar " src="<%=i.thumbnail%>">
+          
+          <% } else { %>
+            <div class="col-6 col-md-4 transclass" style="background-color: #f1b6b6;border-radius: 25px; border: 10px inset #878787; margin: 3px auto;">
+                <h4><%= i.name %></h4>
+            <img class="ingredient-avatar " src="<%=i.thumbnail%>">
+            <% } %>
         </div>
 
       <% }); %>

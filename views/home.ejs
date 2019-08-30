@@ -14,7 +14,7 @@
 <% }); %>
 
 
-<div class=carousel-container style="margin-bottom: 75px;">
+<div class=carousel-container style="margin-bottom: 75px; background-color: black;">
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -29,8 +29,8 @@
           <img class="d-block w-60" src="<%= recipeList[0].imgURL %>" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[0].title %></h5>
-              <p>Preparation Time: <%= recipeList[0].prepTime %></p>
-              <p>Recipe Description Placeholder</p>
+              <p>Preparation Time: <%= recipeList[0].prepTime %> Minutes</p>
+              <p><%= recipeList[0].description %></p>
           </div>
         </div>
 
@@ -38,8 +38,8 @@
           <img class="d-block w-60" src="<%= recipeList[1].imgURL %>" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[1].title %></h5>
-              <p>Preparation Time: <%= recipeList[1].prepTime %></p>
-              <p>Recipe Description Placeholder</p>
+              <p>Preparation Time: <%= recipeList[1].prepTime %> Minutes</p>
+              <p><%= recipeList[1].description %></p>
           </div>
         </div>
 
@@ -47,8 +47,8 @@
           <img class="d-block w-60" src="<%= recipeList[2].imgURL %>" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[2].title %></h5>
-              <p>Preparation Time: <%= recipeList[2].prepTime %></p>
-              <p>Recipe Description Placeholder</p>
+              <p>Preparation Time: <%= recipeList[2].prepTime %> Minutes</p>
+              <p><%= recipeList[2].description %></p>
           </div>
         </div>
 
@@ -76,12 +76,12 @@
             <div class="card text-center foodcard bpad" style="border-radius: 35px 35px 0 0;">
               <% if (recipe.imgURL.length == 0) recipe.imgURL = "https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg"%>
 
-              <img class="card-img-top" src="<%=recipe.imgURL%>" alt="Image Placeholder" style="border: 2px solid black; border-radius: 35px 35px 0 0; width: 100%; height: 100%;">
-              <div class="card-body text-white" style="background-color: black;">
+              <img class="card-img-top" src="<%=recipe.imgURL%>" alt="Image Placeholder" style="box-shadow: 5px 5px black; border-radius: 35px 35px 0 0; width: 100%; height: 100%;">
+              <div class="card-body text-white" style="background-color: black; box-shadow: 5px 5px black;">
                 <h5 class="card-title"><%= recipe.title %></h5>
                 <p class="card-text"><%=recipe.description%></p>
               </div>
-              <div class="card-footer" style="border: 2px solid black; border-radius: 0 0 35px 35px;">
+              <div class="card-footer" style="box-shadow: 5px 5px black; border-radius: 0 0 35px 35px;">
                 <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
                 <br>
                 <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>

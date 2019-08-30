@@ -22,14 +22,14 @@ router.get('/oauth2callback', passport.authenticate(
   'google',
   {
     successRedirect : '/home',  //Change to main page
-    failureRedirect : '/'   //Change to main page
+    failureRedirect : '/home'   //Change to main page
   }
 ));
 
 // LOGOUT route
 router.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
+  req.logout('/home');
+  res.redirect('/home');
 });
 
 module.exports = router;

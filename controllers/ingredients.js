@@ -39,19 +39,3 @@ module.exports = {
       console.log(ingredients)
     });
 }
-
-  // function create(req, res) {
-  //     var ingredient = new Ingredient({
-  //         category: req.body.category,
-  //         name: req.body.name,
-  //         life: req.body.life
-  //     });
-  //     ingredient.save()
-  //     .then(function(data) {
-  //         res.send(data);
-  //     }).catch(function(err) {
-  //         res.status(500).send({
-  //             message: err.message || "Error occurred while creating the Ingredient."
-  //         });
-  //     });
-  // }

@@ -2,8 +2,10 @@
 body {
   margin: 0px;
   padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Livvic', sans-serif;
+  font-size: 14px;
 }
+
 
 .bpad {
   width: 27rem;
@@ -26,6 +28,12 @@ body {
 h1 {
   margin: 20px auto;
   text-align: center;
+}
+
+h2, h3, h4 {
+  margin: 20px auto;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
 }
 
 .carousel-container{
@@ -58,4 +66,34 @@ h1 {
   width: 50px;
   border-radius: 50%;
   background-color: black;
+}
+
+.navbar-font {
+  color: #660a9c !important;
+}
+
+a.nav-link {
+  text-shadow: 0 0 2px #ae5deb;
+}
+
+
+.transclass{
+  background-color:rgb(211, 211, 211);
+  transition:background-color 1.5s ease 0s;
+  }
+  
+.transclass:hover{
+background-color:#bc70f6;
+box-shadow:0px 0px 45px 7px #ffffff;
+}
+
+.transclass2{
+  background-color:rgb(211, 211, 211);
+  transition:background-color 1.5s ease 0s;
+  }
+  
+.transclass2:hover{
+background-color:#000000;
+color: #fff;
+box-shadow:0px 0px 45px 7px #ffffff;
 }

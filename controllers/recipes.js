@@ -11,23 +11,14 @@ module.exports = {
     update,
     delete: deleteRecipe,
     home,
-    randomRecipe
+    // randomRecipe
 };
 
 function findAll(req, res, next) {
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
     Recipe.find(modelQuery, (err, recipes) => {
         res.render('recipes/index', { 
-            recipes,
-            user: req.user,
-            name: req.query.name
-        });
-    });
-}
-
-function findCookable(req, res, next) {
-    Recipe.find({}, (err, recipes) => {
-        res.render('recipes/index', { 
+            title: 'Recipease - Browse',
             recipes,
             user: req.user,
             name: req.query.name
@@ -39,36 +30,34 @@ function findOne(req, res, next) {
     Recipe.findById(req.params.id)
     .populate('reqIngredients')
     .exec((err, recipe)=> {
-        res.render("recipes/show", {
-            ingredients: recipe.reqIngredient,
-            user: req.user,
-            title: recipe.name,
-            recipe
+        var recipeName = recipe.title
+        Chef.findById(req.user)
+        .populate('fridge')
+        .exec((err, fridge) => {
+            res.render("recipes/show", {
+                ingredients: recipe.reqIngredient,
+                fridge,
+                user: req.user,
+                title: `Recipease - ${recipeName}`,
+                recipe
+            });
         });
     });
 };
-
-// function findOne(req, res, next) {
-//     Recipe.findById(req.params.id, (err, recipe) => {
-//         res.render("recipes/show", {
-//             title: recipe.name,
-//             user: req.user,
-//             recipe,
-//         });
-//     });
-// };
 
 function newRecipe(req, res, next) {
     Ingredient.find({}, (err, ingredient) => {
         res.render("recipes/new", {
             user: req.user,
-            ingredient
+            ingredient,
+            title: 'Recipease - New Recipe'
         });
     })
 }
 
 function create(req, res) {
     var recipe = new Recipe({
+        title: 'req.body.title',
         title: req.body.title,
         prepTime: req.body.prepTime,
         imgURL: req.body.imgURL,
@@ -92,7 +81,7 @@ function edit(req, res) {
         Ingredient.find({}, (err, ingredient)=> {
             res.render("recipes/edit", {
                 ingredient,
-                title: `${recipe.name}`,
+                title: 'Recipease - Edit Recipe',
                 user: req.user,
                 recipe,
                 ingredients: recipe.reqIngredient
@@ -133,25 +122,26 @@ function home(req, res, next) {
         res.render('home', { 
             recipes,
             user: req.user,
-            name: req.query.name
+            name: req.query.name,
+            title: `Recipease - Recipes with Your Ingredients`
         });
     });
 }
 
+// Random Recipe Function not implemented yet
+// function randomRecipe(req, res) {
+//     Recipe.find({}, (err, recipes) => {
+//         var rNum = randomNumber(0, recipes.length);
+//         var rID = recipes[rNum]._id
+//         Recipe.findById(rID, (err, recipe) => {
+//             res.render("home", {
+//                 user: req.user,
+//                 recipe
+//             });
+//         });
+//     });
+// }
 
-function randomRecipe(req, res) {
-    Recipe.find({}, (err, recipes) => {
-        var rNum = randomNumber(0, recipes.length);
-        var rID = recipes[rNum]._id
-        Recipe.findById(rID, (err, recipe) => {
-            res.render("home", {
-                user: req.user,
-                recipe
-            });
-        });
-    });
-}
-
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max-min)) + min;
-}
+// function randomNumber(min, max) {
+//     return Math.floor(Math.random() * (max-min)) + min;
+// }

@@ -8,13 +8,13 @@
         <div class="col-lg-10" style="margin: 0 auto;">
         <% recipes.forEach(recipe => { %>
             <div class="card w-75 mt-2" style="margin: 0 auto; padding: 0; width: 100%; height: 15rem; border: 0;">
-                <div class="card-horizontal text-center"style="border: 2px solid black; width: 100%; height: 15%; border-radius: 100px 0 100px 0;">
+                <div class="card-horizontal text-center transclass2" style="box-shadow: 5px 5px black;border: 3px solid white; width: 100%; height: 15%; border-radius: 100px 0 100px 0;">
                     <div class="img-square-wrapper" style="overflow: hidden;">
                         <% if (recipe.imgURL.length == 0) recipe.imgURL = "https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg"%>
 
-                        <img class="card-img mx-auto d-block" src="<%=recipe.imgURL%>" alt="Card image cap" style="height: 100%; width: 60%;">
+                        <img class="card-img mx-auto d-block" src="<%=recipe.imgURL%>" alt="Card image cap" style="height: 100%; width: 400px; border-radius: 100px 0 100px 0;">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="padding: 0;">
                         <h4 class="card-title"><%= recipe.title %></h4>
                         <p class="card-text">Recipe Preparation Time: <%= recipe.prepTime %></p>
                         <p class="card-text">Recipe Description: <%= recipe.description %></p>

@@ -16,7 +16,8 @@ function show(req, res) {
                 user: chef,
                 chef,
                 recipes,
-                fridge: chef.fridge
+                fridge: chef.fridge,
+                title: 'Recipease - My Recipease'
             });
         });
     });
@@ -42,6 +43,7 @@ function showFridge(req, res) {
             res.render('chefs/fridge', {
                 chef,
                 user: chef,
+                title: 'Recipease - My Fridge'
             });
         });
 }
@@ -53,6 +55,7 @@ function editFridge(req, res) {
                 chef,
                 ingredient,
                 user: chef,
+                title: 'Recipease - Fridge Stock'
             });
         });
     });
@@ -63,7 +66,7 @@ function addIngredient(req, res) {
     console.log("This is the req.params.id: ", req.user)
     Chef.findById(req.user, (err, chef) => {
         console.log("REQUEST is in the PUSHING INGREDIENTS phase")
-        chef.fridge = chef.fridge.concat(req.body.ingredients),
+        chef.fridge = req.body.ingredients,
         chef.save(err => {
             console.log("Error while Saving CHEF", err)
             res.redirect(`/chefs/${chef._id}/fridge`)
