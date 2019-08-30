@@ -1,23 +1,19 @@
 
 body {
+  height: 100%;
   margin: 0px;
   padding: 0;
   font-family: 'Livvic', sans-serif;
   font-size: 14px;
 }
 
-
 .bpad {
   width: 27rem;
   height: 22rem;
-  margin-bottom: 25px !important;
-  padding-bottom: 25px !important;
 }
 
 .foodcard {
   width: 27rem;
-  
-  padding-bottom: 25px;
 }
 
 #container {
@@ -30,11 +26,26 @@ h1 {
   text-align: center;
 }
 
-h2, h3, h4 {
+h4 {
+  margin: 2px auto;
+}
+
+.footer-font {
+  font-family: 'Dancing Script', cursive;
+  color: #26459d;
+}
+
+h1.display-4{
+  font-family: 'Dancing Script', cursive;
+  color: #26459d;
+}
+
+h2, h3 {
   margin: 20px auto;
   text-align: center;
   font-family: 'Dancing Script', cursive;
 }
+
 
 .carousel-container{
   margin-top: 45px;
@@ -45,14 +56,14 @@ h2, h3, h4 {
 
 .carousel-inner img {
   margin: auto;
-  max-height: 400px;
+  /* max-height: 400px; */
 }
 
 .profile-avatar {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 .card-horizontal {
@@ -65,15 +76,17 @@ h2, h3, h4 {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  margin: 5px auto;
   background-color: black;
 }
 
 .navbar-font {
-  color: #660a9c !important;
+  color: #26459d !important;
+  
 }
 
 a.nav-link {
-  text-shadow: 0 0 2px #ae5deb;
+  text-shadow: 0 0 2px #26459d;
 }
 
 
@@ -88,12 +101,22 @@ box-shadow:0px 0px 45px 7px #ffffff;
 }
 
 .transclass2{
-  background-color:rgb(211, 211, 211);
+  background-color:rgb(211, 211, 211) !important;
   transition:background-color 1.5s ease 0s;
   }
   
 .transclass2:hover{
-background-color:#000000;
+background-color:#1a2a56 !important;
 color: #fff;
+box-shadow:0px 0px 45px 7px #ffffff;
+}
+
+.transclass3{
+  color: #1a2a56;
+  transition:background-color 1.5s ease 0s;
+  }
+  
+.transclass3:hover{
+color: #4967c0;
 box-shadow:0px 0px 45px 7px #ffffff;
 }

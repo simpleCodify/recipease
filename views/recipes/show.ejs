@@ -1,28 +1,27 @@
 <%- include('../partials/header.ejs'); %>
 
 
-<div class="jumbotron w-75 mx-auto text-center" style="background-color: rgb(238, 238, 238); border-radius: 25px; border: 15px ridge #878787;">
-        <img src="<%=recipe.imgURL%>" style="width: 65%; height: 35%; background-color: rgb(238, 238, 238); border-radius: 25px; border: 10px ridge #878787;">
-        <h1 class="display-4"><%= recipe.title %></h1>
+<div class="jumbotron w-75 mx-auto text-center" style="background-color: white;">
+    <h1 class="display-4"><%= recipe.title %></h1>
+        <img src="<%=recipe.imgURL%>" style="width: 65%; height: 35%; background-color: rgb(238, 238, 238); border-radius: 25px; margin-bottom: 20px;">
         <p class="lead"><%= recipe.description %></p>
         <p>Preparation Time: <%= recipe.prepTime %> Minutes</p>
 
-        <hr class="my-3">
 
 
-<div class="fridge container h-100 p-5" style="height: 100%;background-color: rgb(238, 238, 238); border-radius: 25px; border: 10px ridge #878787;">
+<div class="fridge container h-100 p-5" style="height: 100%;background-color: white; border-radius: 25px;">
     
     <div class="row text-center">
             <% recipe.reqIngredients.forEach(i => { %>
               <% if (user.fridge.includes(i.id)) { %>
-        <div class="col-6 col-md-4 transclass" style="background-color: #b0d79b; border-radius: 25px; border: 10px inset #878787; margin: 3px auto;">
+        <div class="col-6 col-md-2 transclass" style="background-color: white; color: #4967c0; border-radius: 25px; margin: 3px auto; height: 8rem !important;">
+            <img class="ingredient-avatar " src="<%=i.thumbnail%>">
           <h4><%= i.name %></h4>
-          <img class="ingredient-avatar " src="<%=i.thumbnail%>">
           
           <% } else { %>
-            <div class="col-6 col-md-4 transclass" style="background-color: #f1b6b6;border-radius: 25px; border: 10px inset #878787; margin: 3px auto;">
+            <div class="col-6 col-md-2 transclass" style="background-color: white;border-radius: 25px; color: #b81d1d; margin: 3px auto; height: 8rem !important;">
+                <img class="ingredient-avatar " src="<%=i.thumbnail%>">
                 <h4><%= i.name %></h4>
-            <img class="ingredient-avatar " src="<%=i.thumbnail%>">
             <% } %>
         </div>
 
@@ -31,7 +30,6 @@
     
 </div>
 
-        <hr class="my-auto">
 
         <h3 class="display-6 mt-2">Instructions:</h3>
             <p><%=recipe.instructions%></p>

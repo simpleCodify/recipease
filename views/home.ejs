@@ -2,11 +2,6 @@
 
 <!-- THIS IS GETTING THE RENDER's PROPERTIES FROM THE CONTROLLER -->
 
-<% if (user) { %>
-  <h1>Welcome <%= user.name %></h1>
-<% } else { %>
-  <h1>Please Login!</h1>
-<% } %>
 
 <% var recipeList = [] %>
   <% recipes.forEach(recipe => { %>
@@ -14,7 +9,7 @@
 <% }); %>
 
 
-<div class=carousel-container style="margin-bottom: 75px; background-color: black;">
+<div class=carousel-container style="margin-bottom: 75px; width: 100% !important; height: 50% !important; padding: 0 !important; background-color: rgba(221, 221, 221, 0.616); margin-top: 0 !important;">
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -23,10 +18,10 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
       
-      <div class="carousel-inner">
+      <div class="carousel-inner w-100">
 
-        <div class="carousel-item active">
-          <img class="d-block w-60" src="<%= recipeList[0].imgURL %>" alt="First slide">
+        <div class="carousel-item active ">
+          <img class="d-block" src="<%= recipeList[0].imgURL %>" alt="First slide" style="width: 80%; height: 40rem !important;"> 
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[0].title %></h5>
               <p>Preparation Time: <%= recipeList[0].prepTime %> Minutes</p>
@@ -35,7 +30,7 @@
         </div>
 
         <div class="carousel-item">
-          <img class="d-block w-60" src="<%= recipeList[1].imgURL %>" alt="Second slide">
+          <img class="d-block w-60" src="<%= recipeList[1].imgURL %>" alt="Second slide" style="width: 80%; height: 40rem !important;">
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[1].title %></h5>
               <p>Preparation Time: <%= recipeList[1].prepTime %> Minutes</p>
@@ -44,7 +39,7 @@
         </div>
 
         <div class="carousel-item">
-          <img class="d-block w-60" src="<%= recipeList[2].imgURL %>" alt="Third slide">
+          <img class="d-block w-60" src="<%= recipeList[2].imgURL %>" alt="Third slide" style="width: 80%; height: 40rem !important;">
           <div class="carousel-caption d-none d-md-block">
               <h5><%= recipeList[2].title %></h5>
               <p>Preparation Time: <%= recipeList[2].prepTime %> Minutes</p>
@@ -67,8 +62,9 @@
 </div>
 </div>
 
+<h1 class="navbar-font" style="font-family: 'Dancing Script', cursive; margin-top: 0 !important; margin-bottom: 0 !important;">Browse Recipes</h1>
 
-<div id="container">
+<div id="container" style="padding-top: 0 !important;">
     <div class="card-columns row align-items-center">
         <% recipes.forEach(recipe => { %>
         <div class="col-mb-1 col-lg-4" style="padding-bottom: 65px;">
@@ -76,12 +72,10 @@
             <div class="card text-center foodcard bpad" style="border-radius: 35px 35px 0 0;">
               <% if (recipe.imgURL.length == 0) recipe.imgURL = "https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg"%>
 
-              <img class="card-img-top" src="<%=recipe.imgURL%>" alt="Image Placeholder" style="box-shadow: 5px 5px black; border-radius: 35px 35px 0 0; width: 100%; height: 100%;">
-              <div class="card-body text-white" style="background-color: black; box-shadow: 5px 5px black;">
+              <img class="card-img-top" src="<%=recipe.imgURL%>" alt="Image Placeholder" style="border-radius: 35px 35px 0 0; width: 100%; height: 100%;">
+              <div class="card-body" style="background-color: #dce0e7b4; border-radius: 0 0 35px 35px; color: #26459d">
                 <h5 class="card-title"><%= recipe.title %></h5>
                 <p class="card-text"><%=recipe.description%></p>
-              </div>
-              <div class="card-footer" style="box-shadow: 5px 5px black; border-radius: 0 0 35px 35px;">
                 <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon>
                 <br>
                 <a href="/recipes/<%= recipe._id%>" class="btn btn-primary">View this Recipe</a>

@@ -48,6 +48,7 @@ function findOne(req, res, next) {
 function newRecipe(req, res, next) {
     Ingredient.find({}, (err, ingredient) => {
         res.render("recipes/new", {
+            chef: req.session.passport.user,
             user: req.user,
             ingredient,
             title: 'Recipease - New Recipe'

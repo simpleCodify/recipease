@@ -2,9 +2,9 @@ var router = require('express').Router();
 var recipesCtrl = require('../controllers/recipes');
 
 router.get('/recipes', recipesCtrl.findAll);
-router.get('/recipes/new', recipesCtrl.new);
+router.get('/recipes/new', isLoggedIn, recipesCtrl.new);
 
-router.get('/recipes/:id', recipesCtrl.findOne);
+router.get('/recipes/:id', isLoggedIn, recipesCtrl.findOne);
 
 router.get('/recipes/:id/edit', isLoggedIn, recipesCtrl.edit);
 
