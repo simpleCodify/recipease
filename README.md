@@ -62,6 +62,4 @@ HTML, CSS, Javascript, jQuery, Flexbox, Grid, Bootstrap, JSON, MongoDB, MongoDB-
 
 ![Recipease-View-Recipe](link)
 
-![Game-Over-Image](link)
-
 
