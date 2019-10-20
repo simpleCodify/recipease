@@ -52,14 +52,4 @@ Recipease - The Recipe web application that takes Your ingredients into consider
 
 HTML, CSS, Javascript, jQuery, Flexbox, Grid, Bootstrap, JSON, MongoDB, MongoDB-Atlas, Mongoose, Node.JS, ExpressJS, Various Middlewares, EJS, Google+ API, oAuth, RESTful API, Full CRUD operations.
 
-## **Screenshots of Game** : 
-
-![Recipease-Home](link)
-
-![Recipease-Add-Recipe](link)
-
-![Recipease-Fridge](link)
-
-![Recipease-View-Recipe](link)
-
-
+[recipease](https://simplestudios-recipease.herokuapp.com/)
